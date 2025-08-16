@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OC Lock on Call - Orange County's #1 Emergency Locksmith Service</title>
     <meta name="description" content="24/7 Emergency Locksmith Services in Orange County. Fast response, licensed & insured. Call (949) 577-7780 for immediate help with lockouts, key duplication, and security solutions.">
+        <!-- Added lock favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f97316'%3E%3Cpath d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -36,6 +38,26 @@
             --gradient-purple: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-purple-dark) 100%);
             --gradient-hero: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-purple-dark) 50%, var(--primary-orange) 100%);
         }
+
+        a[href^="tel:"] {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            -webkit-touch-callout: default;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        /* Ensure the floating call button works on all devices */
+        .floating-btn a[href^="tel:"] {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }   
 
         * {
             margin: 0;
@@ -360,7 +382,6 @@
             flex-shrink: 0;
         }
 
-        /* Enhanced Floating Button */
         .floating-btn {
             position: fixed;
             bottom: 2rem;
@@ -368,26 +389,41 @@
             z-index: 50;
             animation: float 4s ease-in-out infinite;
         }
-
+        
         .floating-btn .btn {
-            min-width: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-width: auto;
             min-height: 64px;
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             box-shadow: var(--shadow-2xl), 0 0 30px rgba(249, 115, 22, 0.4);
             border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
+            border-radius: 2rem;
+            white-space: nowrap;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
+        
         .floating-btn .btn:hover {
-            transform: scale(1.15);
+            transform: scale(1.05);
             box-shadow: var(--shadow-2xl), 0 0 40px rgba(249, 115, 22, 0.6);
         }
-
+        
         .floating-btn .icon {
             color: white !important;
             stroke: white !important;
             width: 1.5rem;
             height: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .floating-btn .call-text {
+            color: white;
+            font-weight: 700;
+            display: block;
         }
 
         /* Scroll to Top Button */
@@ -848,21 +884,21 @@
         .faq-item {
             background: white;
             border-radius: 1rem;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             margin-bottom: 1.5rem;
             transition: all 0.3s ease;
-            border: 1px solid var(--neutral-gray-200);
+            border: 1px solid #e5e7eb;
             overflow: hidden;
         }
 
         .faq-item:hover {
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             transform: translateY(-2px);
         }
 
         .faq-item.active {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-orange);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border-color: #f97316;
         }
 
         .faq-button {
@@ -879,20 +915,20 @@
         }
 
         .faq-button:hover {
-            background: var(--neutral-gray-50);
+            background: #f9fafb;
         }
 
         .faq-question {
             font-size: 1.25rem;
             font-weight: 600;
-            color: var(--neutral-gray-800);
+            color: #374151;
             padding-right: 1rem;
         }
 
         .faq-icon {
             width: 1.5rem;
             height: 1.5rem;
-            color: var(--primary-orange);
+            color: #f97316;
             transition: transform 0.3s ease;
         }
 
@@ -901,20 +937,21 @@
         }
 
         .faq-answer {
-            padding: 0 2rem 2rem;
-            color: var(--neutral-gray-600);
+            padding: 0 2rem;
+            color: #4b5563;
             line-height: 1.75;
             font-size: 1.125rem;
             max-height: 0;
             overflow: hidden;
-            transition: all 0.3s ease;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .faq-answer.open {
-            max-height: 200px;
+            max-height: 300px;
             padding-bottom: 2rem;
+            opacity: 1;
         }
-
         /* Enhanced Service Areas */
         .areas-section {
             padding: 6rem 0;
@@ -926,8 +963,16 @@
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
             margin-bottom: 4rem;
+            justify-items: center;
         }
 
+        .city-card-center {
+            grid-column: span 1;
+        }
+
+        .cities-grid:has(.city-card:nth-child(9):nth-last-child(2)) .city-card:nth-child(n+9) {
+            justify-self: center;
+        }
         .city-card {
             background: white;
             padding: 1.5rem;
@@ -952,13 +997,33 @@
             overflow: hidden;
             box-shadow: var(--shadow-2xl);
             border: 1px solid var(--neutral-gray-200);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+
 
         .map-container iframe {
             width: 100%;
-            height: 28rem;
             border: 0;
+            margin: 0 auto;
+            display: block;
         }
+        
+
+        .desktop-map {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .mobile-map {
+            display: none;
+            width: 100%;
+            text-align: center;
+        }
+        
 
         /* Enhanced Testimonials */
         .testimonials-section {
@@ -1041,60 +1106,61 @@
             font-size: 1.125rem;
         }
 
-        /* Enhanced Final CTA */
-        .final-cta {
-            padding: 6rem 0;
-            background: var(--gradient-primary);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+        
+  /* Enhanced Final CTA */
+  .final-cta {
+    padding: 6rem 0;
+    background: var(--gradient-primary);
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
 
-        .final-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(124, 58, 237, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-        }
+.final-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(124, 58, 237, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
 
-        .final-cta > * {
-            position: relative;
-            z-index: 1;
-        }
+.final-cta > * {
+    position: relative;
+    z-index: 1;
+}
 
-        .final-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 2rem;
-        }
+.final-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
 
-        .final-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            opacity: 0.95;
-            font-weight: 400;
-        }
+.final-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    font-weight: 400;
+}
 
-        .final-cta-btn {
-            position: relative;
-            display: inline-block;
-        }
+.final-cta-btn {
+    position: relative;
+    display: inline-block;
+}
 
-        .final-cta-btn::before {
-            content: '';
-            position: absolute;
-            inset: -1rem;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 9999px;
-            animation: pulse 3s infinite;
-            filter: blur(15px);
-        }
+.final-cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: -1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    animation: pulse 3s infinite;
+    filter: blur(15px);
+}
 
         .final-note {
             margin-top: 2rem;
@@ -1103,78 +1169,89 @@
             font-weight: 500;
         }
 
-        /* Enhanced Footer */
-        .footer {
-            background: var(--gradient-purple);
+        
+        .why-section .section-title,
+        .final-cta .final-title {
             color: white;
-            padding: 5rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 30% 30%, rgba(249, 115, 22, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        .why-section .section-title::after,
+        .final-cta .final-title::after {
+            background: rgba(255, 255, 255, 0.8);
         }
 
-        .footer > * {
-            position: relative;
-            z-index: 1;
-        }
+   /* Enhanced Footer */
+   .footer {
+    background: var(--gradient-purple);
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
 
-        .footer-logo {
-            height: 6rem;
-            width: 6rem;
-            border-radius: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-xl);
-            border: 3px solid rgba(255, 255, 255, 0.3);
-        }
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(249, 115, 22, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
 
-        .footer-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
+.footer > * {
+    position: relative;
+    z-index: 1;
+}
 
-        .footer-tagline {
-            font-size: 1.375rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            font-weight: 400;
-        }
+.footer-logo {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-xl);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
 
-        .footer-phone {
-            font-size: 1.5rem;
-            margin-bottom: 2.5rem;
-            font-weight: 600;
-        }
+.footer-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
 
-        .footer-phone a {
-            color: var(--primary-orange-light);
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
+.footer-tagline {
+    font-size: 1.375rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    font-weight: 400;
+}
 
-        .footer-phone a:hover {
-            color: white;
-            text-shadow: 0 0 20px rgba(249, 115, 22, 0.8);
-        }
+.footer-phone {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+}
 
-        .footer-copyright {
-            margin-top: 2rem;
-            font-size: 1rem;
-            opacity: 0.8;
-        }
+.footer-phone a {
+    color: var(--primary-orange-light);
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.footer-phone a:hover {
+    color: white;
+    text-shadow: 0 0 20px rgba(249, 115, 22, 0.8);
+}
+
+.footer-copyright {
+    margin-top: 2rem;
+    font-size: 1rem;
+    opacity: 0.8;
+}
 
         /* Loading Animation */
         .loading-overlay {
@@ -1210,6 +1287,22 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Reduced animation versions for mobile */
+@keyframes floatReduced {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes badgePulseReduced {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.95; 
+        transform: scale(1.02);
+    }
+}
         /* Responsive Design */
         @media (max-width: 1024px) {
             .hero {
@@ -1232,6 +1325,23 @@
             }
         }
 
+        @media (min-width: 1200px) {
+            .cities-grid {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 1000px;
+                margin: 0 auto 4rem;
+            }
+            
+            /* Make last two items span and center in their own row */
+            .city-card:nth-child(9) {
+                grid-column: 2;
+            }
+            
+            .city-card:nth-child(10) {
+                grid-column: 3;
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 1rem;
@@ -1240,6 +1350,14 @@
             .hero {
                 min-height: 80vh;
                 padding: 4rem 0;
+            }
+
+            .hero::before {
+                animation: none;
+            }
+        
+            .hero::after {
+                animation: none;
             }
 
             .logo {
@@ -1255,6 +1373,9 @@
             .badge {
                 padding: 0.75rem 1.25rem;
             }
+            .badge-24-7 {
+                animation: badgePulseMobile 4s infinite;
+            }
 
             .btn-large {
                 padding: 1rem 2rem;
@@ -1265,15 +1386,19 @@
                 padding: 1.25rem 2.25rem;
                 font-size: 1.25rem;
             }
-
+            
             .floating-btn {
-                bottom: 1.5rem;
-                right: 1.5rem;
+                animation: floatMobile 6s ease-in-out infinite;
             }
 
             .floating-btn .btn {
-                min-width: 56px;
                 min-height: 56px;
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+        
+            .floating-btn .call-text {
+                display: block;
             }
 
             .scroll-top {
@@ -1317,16 +1442,79 @@
                 height: 24rem;
             }
 
-            .service-card,
-            .testimonial-card {
-                padding: 2rem;
-            }
+           .service-card:hover,
+    .testimonial-card:hover,
+    .feature:hover {
+        transform: none;
+    }
 
             .faq-button {
                 padding: 1.5rem;
             }
+
+            .desktop-map {
+                display: none;
+            }
+            
+            .mobile-map {
+                display: block;
+            }
+            
+            .map-container iframe {
+                height: 300px;
+            }
+
+            .logo-container {
+                animation: logoEntranceMobile 1s ease-out 0.5s both;
+            }
+
+            .btn:hover {
+                transform: translate3d(0, -2px, 0);
+            }
+
+              /* Disable pulse animations that can cause performance issues */
+    .main-cta::before {
+        animation: none;
+    }
+
+    .final-cta-btn::before {
+        animation: none;
+    }
+
+       /* Disable complex particle animations */
+       @keyframes floatingParticles {
+        0%, 100% { transform: translateY(0px); }
+    }
+
+
+    .logo {
+        /* Use simpler transitions on mobile */
+        transition: box-shadow 0.3s ease, filter 0.3s ease;
+    }
+    
+    .logo:hover {
+        /* Remove scale and rotation transforms */
+        transform: none;
+        /* Keep only the glow effect */
+        box-shadow: var(--shadow-2xl), 0 0 50px rgba(249, 115, 22, 0.4);
+    }
+    
+    /* Add touch-specific interaction */
+    .logo:active {
+        filter: brightness(1.1);
+        transform: scale(0.98);
+        transition: all 0.1s ease;
+    }
+            
         }
 
+        @media (min-width: 769px) {
+            .map-container iframe {
+                height: 600px;
+                max-width: 800px;
+            }
+        }
+        
         @media (max-width: 480px) {
             .hero {
                 min-height: 75vh;
@@ -1358,8 +1546,14 @@
             }
 
             .floating-btn .btn {
-                min-width: 52px;
                 min-height: 52px;
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+                gap: 0.375rem;
+            }
+        
+            .floating-btn .call-text {
+                display: block;
             }
 
             .service-card,
@@ -1382,6 +1576,36 @@
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
+
+            .hero::before,
+    .hero::after,
+    .floating-btn,
+    .main-cta::before,
+    .final-cta-btn::before {
+        animation: none;
+    }
+
+
+    .badge-24-7 {
+        animation: none;
+    }
+
+    /* Keep only essential entrance animations with reduced duration */
+    .logo-container {
+        animation: logoEntrance 0.8s ease-out 0.3s both;
+    }
+
+    .hero-subtitle {
+        animation: fadeInUp 0.6s ease-out 0.5s both;
+    }
+
+    .main-cta {
+        animation: fadeInUp 0.6s ease-out 0.7s both;
+    }
+
+    .hero-badges {
+        animation: fadeInUp 0.6s ease-out 0.9s both;
+    }
         }
 
         @media (max-width: 320px) {
@@ -1389,21 +1613,42 @@
                 bottom: 1rem;
                 right: 1rem;
             }
+        
+            .floating-btn .btn {
+                min-width: 48px;
+                min-height: 48px;
+                padding: 0.75rem;
+            }
+            
+            .floating-btn .call-text {
+                display: none;
+            }
 
             .scroll-top {
                 bottom: 1rem;
                 left: 1rem;
             }
 
-            .floating-btn .btn {
-                min-width: 48px;
-                min-height: 48px;
-            }
+        
 
             .container {
                 padding: 0 0.75rem;
             }
         }
+
+        @media (max-width: 360px) {
+            .floating-btn .call-text {
+                display: none;
+            }
+            
+            .floating-btn .btn {
+                min-width: 52px;
+                min-height: 52px;
+                padding: 0.75rem;
+                border-radius: 50%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1458,15 +1703,16 @@
         </div>
     </section>
 
-    <!-- Floating Call Button -->
-    <div class="floating-btn">
-        <a href="tel:+19495777780" class="btn btn-primary" aria-label="Call Now">
-            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-            </svg>
-            <span>Call Now</span>
-        </a>
-    </div>
+
+<!-- Floating Call Button -->
+<div class="floating-btn">
+    <a href="tel:+19495777780" class="btn btn-primary" aria-label="Click to Call Now">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        </svg>
+        <span class="call-text">Click to Call</span>
+    </a>
+</div>
 
     <!-- Scroll to Top Button -->
     <div class="scroll-top" id="scrollTop">
@@ -1509,167 +1755,168 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title">Expert Locksmith Services</h2>
-                <p class="section-subtitle">Fast, reliable, and professional locksmith solutions for all your security needs</p>
-            </div>
+<!-- Services Section -->
+<section class="services-section">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Expert Locksmith Services</h2>
+            <p class="section-subtitle">Fast, reliable, and professional locksmith solutions for all your security needs</p>
+        </div>
 
-            <div class="services-grid">
-                <div class="service-card animate-on-scroll slide-left">
-                    <div class="service-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Residential</h3>
-                    <ul class="service-list">
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Home Lockouts</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Lock Installation</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Key Duplication</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Security Upgrades</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Commercial</h3>
-                    <ul class="service-list">
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Office Lockouts</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Master Key Systems</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Access Control</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Safe Services</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM21 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17h4m4 0h2m-6 0v-5a1 1 0 011-1h4a1 1 0 011 1v5m-6 0V9a1 1 0 011-1h4a1 1 0 011 1v8"></path>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Automotive</h3>
-                    <ul class="service-list">
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Car Lockouts</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Key Programming</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Ignition Repair</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Transponder Keys</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="service-card animate-on-scroll slide-right">
-                    <div class="service-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Emergency</h3>
-                    <ul class="service-list">
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>24/7 Availability</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Rapid Response</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>All Lock Types</span>
-                        </li>
-                        <li class="service-item">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>No Hidden Fees</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 4rem;" class="animate-on-scroll">
-                <a href="tel:+19495777780" class="btn btn-primary btn-large">
-                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        <div class="services-grid">
+            <div class="service-card animate-on-scroll slide-left">
+                <div class="service-icon">
+                    <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                     </svg>
-                    Call for Free Quote
-                </a>
+                </div>
+                <h3 class="service-title">Emergency</h3>
+                <ul class="service-list">
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>24/7 Availability</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Rapid Response</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>All Lock Types</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>No Hidden Fees</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="service-card animate-on-scroll">
+                <div class="service-icon">
+                    <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
+                        <circle cx="16" cy="8" r="1" fill="currentColor"></circle>
+                    </svg>
+                </div>
+                <h3 class="service-title">Automotive</h3>
+                <ul class="service-list">
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Car Lockouts</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Key Programming</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Ignition Repair</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Transponder Keys</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="service-card animate-on-scroll">
+                <div class="service-icon">
+                    <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                </div>
+                <h3 class="service-title">Commercial</h3>
+                <ul class="service-list">
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Office Lockouts</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Master Key Systems</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Access Control</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Safe Services</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="service-card animate-on-scroll slide-right">
+                <div class="service-icon">
+                    <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                </div>
+                <h3 class="service-title">Residential</h3>
+                <ul class="service-list">
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Home Lockouts</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Lock Installation</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Key Duplication</span>
+                    </li>
+                    <li class="service-item">
+                        <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Security Upgrades</span>
+                    </li>
+                </ul>
             </div>
         </div>
-    </section>
+
+        <div style="text-align: center; margin-top: 4rem;" class="animate-on-scroll">
+            <a href="tel:+19495777780" class="btn btn-primary btn-large">
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+                Call for Free Quote
+            </a>
+        </div>
+    </div>
+</section>
+
 
     <!-- Direct Call-to-Action Section -->
     <section class="quote-section">
@@ -1819,7 +2066,6 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section class="faq-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -1926,144 +2172,199 @@
             </div>
 
             <div style="text-align: center; margin-top: 4rem;" class="animate-on-scroll">
-                <p style="color: #6b7280; margin-bottom: 1.5rem; font-size: 1.125rem;">Still have questions? We're here to help!</p>
+                <p style="color: #6b7280; margin-bottom: 1.5rem; font-size: 1.125rem;">
+                    Still have questions? We're here to help!
+                </p>
                 <a href="tel:+19495777780" class="btn btn-primary btn-large">
-                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    <svg class="icon" fill="none" stroke="#ffffff" viewBox="0 0 24 24" width="24" height="24" style="margin-right: 8px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                        </path>
                     </svg>
                     Call Us Now
                 </a>
             </div>
+            
         </div>
     </section>
 
-    <!-- Service Areas -->
-    <section class="areas-section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title">Serving All Orange County</h2>
-                <p class="section-subtitle">Fast locksmith services throughout Orange County</p>
+
+<!-- Service Areas -->
+<section class="areas-section">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Serving All Orange County</h2>
+            <p class="section-subtitle">Fast locksmith services throughout Orange County</p>
+        </div>
+
+        <div class="cities-grid animate-on-scroll">
+            <div class="city-card">Huntington Beach</div>
+            <div class="city-card">Newport Beach</div>
+            <div class="city-card">Costa Mesa</div>
+            <div class="city-card">Anaheim</div>
+            <div class="city-card">Orange</div>
+            <div class="city-card">Irvine</div>
+            <div class="city-card">Laguna Niguel</div>
+            <div class="city-card">Lake Forest</div>
+            <div class="city-card city-card-center">Mission Viejo</div>
+            <div class="city-card city-card-center">Tustin</div>
+        </div>
+
+<!-- Fixed map container with complete Google Maps URLs -->
+<div class="map-container animate-on-scroll">
+    <!-- Desktop Map -->
+    <div class="desktop-map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d400313.1447145983!2d-118.11376178418337!3d33.67077576981922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1755303541735!5m2!1sen!2sus"
+            width="800"
+            height="600"
+            style="border:0; width: 100%; max-width: 800px; height: 600px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Orange County Service Area Map">
+        </iframe>
+    </div>
+    <!-- Mobile Map - Fixed URL -->
+    <div class="mobile-map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d400313.1447145983!2d-118.11376178418337!3d33.67077576981922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1755303541735!5m2!1sen!2sus"
+            width="400"
+            height="300"
+            style="border:0; width: 100%; max-width: 400px; height: 300px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Orange County Service Area Map">
+        </iframe>
+    </div>
+</div>
+</section>
+
+<!-- Enhanced "What Our Customers Say" section -->
+<!-- Testimonials -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">What Do Our Customers Say</h2>
+            <div class="stars">
+                <svg class="star" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="star" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="star" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="star" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <svg class="star" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+            </div>
+            <p class="section-subtitle">Over 1,000+ satisfied customers across Orange County</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card animate-on-scroll slide-left">
+                <div class="testimonial-stars">
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </div>
+                <p class="testimonial-text">"I couldn't access my safe, and Mike got it open in no time. He was professional and kept me updated on his arrival. Truly a lifesaver for my important documents!"</p>
+                <p class="testimonial-author">— Laura T.</p>
             </div>
 
-            <div class="cities-grid animate-on-scroll">
-                <div class="city-card">Huntington Beach</div>
-                <div class="city-card">Newport Beach</div>
-                <div class="city-card">Costa Mesa</div>
-                <div class="city-card">Anaheim</div>
-                <div class="city-card">Orange</div>
-                <div class="city-card">Irvine</div>
-                <div class="city-card">Laguna Niguel</div>
-                <div class="city-card">Lake Forest</div>
-                <div class="city-card">Mission Viejo</div>
-                <div class="city-card">Tustin</div>
+            <div class="testimonial-card animate-on-scroll">
+                <div class="testimonial-stars">
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </div>
+                <p class="testimonial-text">"Lost my car key during a hectic day, but Sarah made a new key on the spot in under 20 minutes. Super friendly and quick service!"</p>
+                <p class="testimonial-author">— James P.</p>
             </div>
 
-            <div class="map-container animate-on-scroll">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d181916.5746373311!2d-117.81149116837928!3d33.72718583841381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1754878507534!5m2!1sen!2sus"
-                    allowfullscreen
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="Orange County Service Area Map">
-                </iframe>
+            <div class="testimonial-card animate-on-scroll slide-right">
+                <div class="testimonial-stars">
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </div>
+                <p class="testimonial-text">"Locked out of my home, I called and David got me back in quickly. I also asked for a digital lock, and he installed it perfectly that same visit. Amazing service!"</p>
+                <p class="testimonial-author">— Mark S.</p>
+            </div>
+
+            <!-- CHANGE: Added fourth testimonial card -->
+            <div class="testimonial-card animate-on-scroll slide-left">
+                <div class="testimonial-stars">
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </div>
+                <p class="testimonial-text">"My office building needed new security locks installed. The team arrived on time, worked efficiently, and explained everything clearly. Our employees feel much safer now!"</p>
+                <p class="testimonial-author">— Rachel M.</p>
             </div>
         </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title">What Our Customers Say</h2>
-                <div class="stars">
-                    <svg class="star" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                    <svg class="star" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                    <svg class="star" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                    <svg class="star" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                    <svg class="star" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                </div>
-                <p class="section-subtitle">Over 1,000+ satisfied customers across Orange County</p>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card animate-on-scroll slide-left">
-                    <div class="testimonial-stars">
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                    </div>
-                    <p class="testimonial-text">"I couldn't access my safe, and Mike got it open in no time. He was professional and kept me updated on his arrival. Truly a lifesaver for my important documents!"</p>
-                    <p class="testimonial-author">— Laura T.</p>
-                </div>
-
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-stars">
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                    </div>
-                    <p class="testimonial-text">"Lost my car key during a hectic day, but Sarah made a new key on the spot in under 20 minutes. Super friendly and quick service!"</p>
-                    <p class="testimonial-author">— James P.</p>
-                </div>
-
-                <div class="testimonial-card animate-on-scroll slide-right">
-                    <div class="testimonial-stars">
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                    </div>
-                    <p class="testimonial-text">"Locked out of my home, I called and David got me back in quickly. I also asked for a digital lock, and he installed it perfectly that same visit. Amazing service!"</p>
-                    <p class="testimonial-author">— Mark S.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
     <!-- Final CTA -->
     <section class="final-cta">
@@ -2114,6 +2415,23 @@
                 loadingOverlay.classList.add('hidden');
             }, 1000);
         });
+
+        function updateMapDisplay() {
+            const desktopMap = document.querySelector('.desktop-map');
+            const mobileMap = document.querySelector('.mobile-map');
+            
+            if (window.innerWidth <= 768) {
+                desktopMap.style.display = 'none';
+                mobileMap.style.display = 'block';
+            } else {
+                desktopMap.style.display = 'block';
+                mobileMap.style.display = 'none';
+            }
+        }
+
+        // Update map display on load and resize
+        window.addEventListener('load', updateMapDisplay);
+        window.addEventListener('resize', updateMapDisplay);
 
         // Enhanced FAQ Toggle Functionality
         function toggleFaq(index) {
