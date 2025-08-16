@@ -600,11 +600,15 @@
             margin-bottom: 5rem;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
+    
+/* FIXED: Services Grid Layout - 2x2 Grid for 4 Cards */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 2.5rem;
+    max-width: 800px; /* Constrain the grid width */
+    margin: 0 auto; /* Center the grid */
+}
 
         .service-card {
             background: white;
@@ -960,10 +964,12 @@
 
         .cities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(2, 1fr); /* Always 2 columns, even on mobile */
             gap: 1.5rem;
             margin-bottom: 4rem;
             justify-items: center;
+            max-width: 1000px;
+            margin: 0 auto 4rem;
         }
 
         .city-card-center {
@@ -983,7 +989,10 @@
             color: var(--neutral-gray-700);
             transition: all 0.3s ease;
             border: 1px solid var(--neutral-gray-200);
+            width: 100%; /* Full width of grid cell */
+            min-width: 0; /* Allow shrinking */
         }
+        
 
         .city-card:hover {
             box-shadow: var(--shadow-lg);
@@ -1311,8 +1320,16 @@
             }
             
             .services-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 2rem;
+                grid-template-columns: repeat(2, 1fr); /* Keep 2 columns */
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+               /* Place residential service in the center below the 2x2 grid */
+               .service-card:last-child {
+                grid-column: 1 / -1;
+                max-width: 400px;
+                margin: 2rem auto 0;
             }
             
             .features-grid {
@@ -1322,6 +1339,21 @@
 
             .testimonials-grid {
                 grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+   /* Tablet layout: Keep 2 columns */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+           /* Mobile layout: single column */
+           @media (max-width: 767px) {
+            .services-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1339,6 +1371,13 @@
             
             .city-card:nth-child(10) {
                 grid-column: 3;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .cities-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
             }
         }
 
@@ -1416,7 +1455,14 @@
             }
 
             .cities-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                grid-template-columns: repeat(2, 1fr); /* Keep 2 columns on mobile */
+                gap: 1rem; /* Smaller gap for mobile */
+                margin-bottom: 3rem;
+            }
+            
+            .city-card {
+                padding: 1rem 0.75rem; /* Smaller padding for mobile */
+                font-size: 0.9rem; /* Slightly smaller text */
             }
 
             .benefits-grid {
@@ -1441,6 +1487,15 @@
             .map-container iframe {
                 height: 24rem;
             }
+
+            
+/* Mobile layout: Single column */
+@media (max-width: 767px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        max-width: 100%;
+    }
+}
 
            .service-card:hover,
     .testimonial-card:hover,
@@ -1606,6 +1661,17 @@
     .hero-badges {
         animation: fadeInUp 0.6s ease-out 0.9s both;
     }
+
+    .cities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+    
+    .city-card {
+        padding: 0.875rem 0.5rem;
+        font-size: 0.85rem;
+        border-radius: 0.75rem;
+    }
         }
 
         @media (max-width: 320px) {
@@ -1633,6 +1699,15 @@
 
             .container {
                 padding: 0 0.75rem;
+            }
+
+            .cities-grid {
+                gap: 0.5rem;
+            }
+            
+            .city-card {
+                padding: 0.75rem 0.375rem;
+                font-size: 0.8rem;
             }
         }
 
@@ -1755,8 +1830,8 @@
         </div>
     </section>
 
-<!-- Services Section -->
-<section class="services-section">
+ <!-- Services Section -->
+ <section class="services-section">
     <div class="container">
         <div class="section-header animate-on-scroll">
             <h2 class="section-title">Expert Locksmith Services</h2>
@@ -1801,9 +1876,9 @@
 
             <div class="service-card animate-on-scroll">
                 <div class="service-icon">
-                    <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
-                        <circle cx="16" cy="8" r="1" fill="currentColor"></circle>
+                    <!-- White Car Icon -->
+                    <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+                        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L4 8v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h10v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1V8l-1.08-1.99zM6.5 12c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9s1.5.67 1.5 1.5S7.33 12 6.5 12zm11 0c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 7h14l-.78 1.5H5.78L5 7z"/>
                     </svg>
                 </div>
                 <h3 class="service-title">Automotive</h3>
@@ -1916,6 +1991,7 @@
         </div>
     </div>
 </section>
+
 
 
     <!-- Direct Call-to-Action Section -->
