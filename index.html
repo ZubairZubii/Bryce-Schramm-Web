@@ -847,7 +847,7 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 4rem;
+            gap: 3rem;
         }
 
         .feature {
@@ -1378,6 +1378,10 @@
         padding: 2rem 1.5rem;
         min-height: 420px;
       }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
 }
 
 
@@ -1393,6 +1397,9 @@
         padding: 1.5rem 1.25rem;
         width: 100%;
         min-height: auto;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
       }
 
 }
@@ -1412,6 +1419,12 @@
             .city-card:nth-child(10) {
                 grid-column: 3;
             }
+
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+              }
+
+            
         }
 
         @media (min-width: 768px) and (max-width: 1199px) {
@@ -1860,6 +1873,64 @@
         </button>
     </div>
 
+
+    <!-- Service Areas -->
+<section class="areas-section">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Serving All Orange County</h2>
+            <p class="section-subtitle">Fast locksmith services throughout Orange County</p>
+        </div>
+
+        <div class="cities-grid animate-on-scroll">
+            <div class="city-card">Huntington Beach</div>
+            <div class="city-card">Newport Beach</div>
+            <div class="city-card">Costa Mesa</div>
+            <div class="city-card">Anaheim</div>
+            <div class="city-card">Orange</div>
+            <div class="city-card">Irvine</div>
+            <div class="city-card">Laguna Niguel</div>
+            <div class="city-card">Lake Forest</div>
+            <div class="city-card city-card-center">Mission Viejo</div>
+            <div class="city-card city-card-center">Tustin</div>
+        </div>
+
+<!-- Fixed map container with complete Google Maps URLs -->
+<div class="map-container animate-on-scroll">
+
+   <!-- Desktop Map -->
+<div class="desktop-map">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d205168.95509836634!2d-117.81344042191216!3d33.67997110376496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1755341137701!5m2!1sen!2sus"
+        width="800"
+        height="600"
+        style="border:0; width: 100%; max-width: 800px; height: 600px;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Orange County Service Area Map">
+    </iframe>
+</div>
+
+<!-- Mobile Map -->
+<div class="mobile-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d277437.1894521264!2d-117.80032658192961!3d33.69530156795169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1755342038492!5m2!1sen!2sus" 
+    width="400" 
+    height="300" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Orange County Service Area Map">
+    </iframe>
+</div>
+
+
+
+    
+</div>
+</section>
+
     <!-- Trust Indicators -->
     <section class="trust-section">
         <div class="container">
@@ -1892,6 +1963,8 @@
         </div>
     </section>
 
+
+    
  <!-- Services Section -->
  <section class="services-section">
     <div class="container">
@@ -2327,57 +2400,7 @@
     </section>
 
 
-<!-- Service Areas -->
-<section class="areas-section">
-    <div class="container">
-        <div class="section-header animate-on-scroll">
-            <h2 class="section-title">Serving All Orange County</h2>
-            <p class="section-subtitle">Fast locksmith services throughout Orange County</p>
-        </div>
 
-        <div class="cities-grid animate-on-scroll">
-            <div class="city-card">Huntington Beach</div>
-            <div class="city-card">Newport Beach</div>
-            <div class="city-card">Costa Mesa</div>
-            <div class="city-card">Anaheim</div>
-            <div class="city-card">Orange</div>
-            <div class="city-card">Irvine</div>
-            <div class="city-card">Laguna Niguel</div>
-            <div class="city-card">Lake Forest</div>
-            <div class="city-card city-card-center">Mission Viejo</div>
-            <div class="city-card city-card-center">Tustin</div>
-        </div>
-
-<!-- Fixed map container with complete Google Maps URLs -->
-<div class="map-container animate-on-scroll">
-    <!-- Desktop Map -->
-    <div class="desktop-map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d400313.1447145983!2d-118.11376178418337!3d33.67077576981922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1755303541735!5m2!1sen!2sus"
-            width="800"
-            height="600"
-            style="border:0; width: 100%; max-width: 800px; height: 600px;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Orange County Service Area Map">
-        </iframe>
-    </div>
-    <!-- Mobile Map - Fixed URL -->
-    <div class="mobile-map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d400313.1447145983!2d-118.11376178418337!3d33.67077576981922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1755303541735!5m2!1sen!2sus"
-            width="400"
-            height="300"
-            style="border:0; width: 100%; max-width: 400px; height: 300px;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Orange County Service Area Map">
-        </iframe>
-    </div>
-</div>
-</section>
 
 <!-- Enhanced "What Our Customers Say" section -->
 <!-- Testimonials -->
